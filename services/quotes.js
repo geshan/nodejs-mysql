@@ -6,7 +6,7 @@ async function getMultiple(page = 1){
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
     'SELECT id, quote, author FROM quote LIMIT ?,?', 
-    [offset, config.listPerPage]
+    [offset.toString(), config.listPerPage.toString()]
   );
   const data = helper.emptyOrRows(rows);
   const meta = {page};
